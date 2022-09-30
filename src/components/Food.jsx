@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { data } from './data/data'
 import FoodItems from './FoodItems'
 
-const Food = () => {
+const Food = ({setSearchValue, searchValue}) => {
 
   const [foods, setFoods] = useState(data)
 
@@ -56,7 +56,7 @@ const Food = () => {
       {/* Еда */}
 
       <div className=' grid grid-cols-1 gap-2 pt-6  lg:grid-cols-4 lg:gap-6 lg:pt-4 sm:grid-cols-2  sm:gap-4 p-3 '>
-{foods.map((item, index) => 
+{foods.filter((items) => items.name.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => 
 (
   <FoodItems {...item} key={index}/>
 ))}

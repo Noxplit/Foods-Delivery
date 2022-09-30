@@ -5,7 +5,7 @@ import { TbTruckDelivery } from 'react-icons/tb'
 import { MdFavorite, MdHelp } from 'react-icons/md'
 import { FaWallet, FaUserFriends } from 'react-icons/fa'
 
-const Navbar = () => {
+const Navbar = ({searchValue, setSearchValue}) => {
 	const [nav, setNav] = useState(true)
 
 	return (
@@ -28,7 +28,7 @@ const Navbar = () => {
 
 			<div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
 				<AiOutlineSearch size={25} />
-				<input
+				<input value={searchValue} onChange={obj => setSearchValue(obj.target.value)}
 					className=' bg-transparent p-2 focus:outline-none  w-full'
 					type='text'
 					placeholder='Поиск еды...'
