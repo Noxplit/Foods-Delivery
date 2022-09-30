@@ -6,6 +6,23 @@ const Food = () => {
 
   const [foods, setFoods] = useState(data)
 
+  {/* Фильтрация по категориям */}
+
+ const filterCat = (category) => {
+  setFoods(
+    data.filter(item => {
+      return item.category ===  category
+    })
+  )}
+
+ const filterPrice = (price) => {
+  setFoods(
+    data.filter(item => {
+      return item.price ===  price
+    })
+  )
+ }
+
 	const style = {
 		button:
 			' border-orange-600 text-orange-600  font-bold hover:bg-orange-600 hover:text-white m-1',
@@ -20,19 +37,19 @@ const Food = () => {
 					<div className='flex justify-between flex-wrap m-2'>
 						<p className={style.p}>Категории:</p>
 
-						<button className={style.button}>Все</button>
-						<button className={style.button}>Бургеры</button>
-						<button className={style.button}>Пицца</button>
-						<button className={style.button}>Салаты</button>
-						<button className={style.button}>Курица</button>
+						<button onClick={() => setFoods(data)} className={style.button}>Все</button>
+						<button onClick={() => filterCat('burger')} className={style.button}>Бургеры</button>
+						<button onClick={() => filterCat('pizza')} className={style.button}>Пицца</button>
+						<button onClick={() => filterCat('salad')} className={style.button}>Салаты</button>
+						<button onClick={() => filterCat('chicken')} className={style.button}>Курица</button>
 					</div>
 				</div>
 				<div className='flex justify-between max-w-[390px] w-full'>
 					<p className={style.p}>Цена:</p>
-					<button className={style.button}>$</button>
-					<button className={style.button}>$$</button>
-					<button className={style.button}>$$$</button>
-					<button className={style.button}>$$$$</button>
+					<button onClick={() => filterPrice('$')} className={style.button}>$</button>
+					<button onClick={() => filterPrice('$$')}className={style.button}>$$</button>
+					<button onClick={() => filterPrice('$$$')}className={style.button}>$$$</button>
+					<button Click={() => filterPrice('$$$$')} className={style.button}>$$$$</button>
 					<div></div>
 				</div>
 			</div>
