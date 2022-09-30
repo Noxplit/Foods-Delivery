@@ -2,11 +2,11 @@ import React from 'react'
 
 const HeadlineCards = () => {
 	return (
-		<div className='max-w-[1640px] mx-auto p-4 py-12 grid md:grid-cols-3 gap-6'>
+		<div className='max-w-[1640px] mx-auto p-4 py-12 grid md:grid-cols-3 gap-6 '>
 			{/* Элементы  */}
-			<div className='relative rounded-full'>
+			<div className='relative rounded-full shadow-lg hover:scale-105 transition-transform'>
 				{/* Слои */}
-				<div className=' absolute w-full h-full bg-black/50 rounded-xl text-white'>
+				<div className=' absolute w-full h-full bg-black/50 rounded-xl text-white '>
 					<p className=' font-bold text-2xl px-2 pt-4'>Панкейк по парижски</p>
 					<p className='px-2'>Сладкий перекус для всей вашей семьи!</p>
 					<button className='border-white bg-white text-black mx-2 absolute bottom-4 '>
@@ -19,7 +19,7 @@ const HeadlineCards = () => {
 					alt='/'
 				/>
 			</div>
-      <div className='relative rounded-full'>
+      <div className='relative rounded-full shadow-lg hover:scale-105 transition-transform'>
 				{/* Слои */}
 				<div className=' absolute w-full h-full bg-black/50 rounded-xl text-white'>
 					<p className=' font-bold text-2xl px-2 pt-4'>Шаурма классическая</p>
@@ -34,7 +34,7 @@ const HeadlineCards = () => {
 					alt='/'
 				/>
 			</div>
-      <div className='relative rounded-full'>
+      <div className='relative rounded-full shadow-lg hover:scale-105 transition-transform'>
 				{/* Слои */}
 				<div className=' absolute w-full h-full bg-black/50 rounded-xl text-white'>
 					<p className=' font-bold text-2xl px-2 pt-4'>Фруктовый салат</p>
