@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { data } from './data/data'
 import FoodItems from './FoodItems'
 
-const Food = ({setSearchValue, searchValue}) => {
+const Food = ({ searchValue, category, setCategory}) => {
 
   const [foods, setFoods] = useState(data)
+  console.log(category);
 
   {/* Фильтрация по категориям */}
 
@@ -21,6 +22,11 @@ const Food = ({setSearchValue, searchValue}) => {
       return item.price ===  price
     })
   )
+ }
+
+ function returnMainMenu() {
+  setCategory(!category)
+  window.scrollTo(0, 0)
  }
 
 	const style = {
@@ -61,6 +67,7 @@ const Food = ({setSearchValue, searchValue}) => {
   <FoodItems {...item} key={index}/>
 ))}
       </div>
+      {(category || searchValue) && <div onClick={returnMainMenu} className={` text-center rounded-full border-2  text-3xl p-3  ${style.button}`}>Вернутся в главное меню</div> }
 		</div>
 	)
 }

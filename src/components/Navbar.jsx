@@ -1,12 +1,33 @@
-import React, { useState } from 'react'
-import { AiFillTag, AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
+import React, { useEffect, useState } from 'react'
+import {  AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineRollback } from 'react-icons/ai'
 import { BsFillCartFill } from 'react-icons/bs'
-import { TbTruckDelivery } from 'react-icons/tb'
-import { MdFavorite, MdHelp } from 'react-icons/md'
-import { FaWallet, FaUserFriends } from 'react-icons/fa'
+import { MdFavorite, MdFastfood} from 'react-icons/md'
 
-const Navbar = ({searchValue, setSearchValue}) => {
+
+const Navbar = ({searchValue, setSearchValue, setCategory, category}) => {
 	const [nav, setNav] = useState(true)
+
+
+
+
+  function backToMain() {
+    setNav(!nav)
+    setCategory(!category)
+    setSearchValue(' ')
+  }
+
+  function searchMenu(e) {
+   
+      setSearchValue(e.target.value)
+      setCategory(true)
+    
+
+  }
+
+  useEffect(() => {
+    setSearchValue(' ')
+  },[category])
+
 
 	return (
 		<div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -28,7 +49,7 @@ const Navbar = ({searchValue, setSearchValue}) => {
 
 			<div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
 				<AiOutlineSearch size={25} />
-				<input value={searchValue} onChange={obj => setSearchValue(obj.target.value)}
+				<input value={searchValue} onChange={searchMenu}
 					className=' bg-transparent p-2 focus:outline-none  w-full'
 					type='text'
 					placeholder='Поиск еды...'
@@ -61,30 +82,23 @@ const Navbar = ({searchValue, setSearchValue}) => {
 				</h2>
 				<nav>
 					<ul className='flex flex-col p-4 text-gray-600'>
-						<li className='text-xl py-4 px-4 flex'>
-							<TbTruckDelivery className='mr-10' size={25} />
-							Заказы
+						<li onClick={backToMain} className='text-xl py-4 px-4 flex hover:underline cursor-pointer'>
+							<MdFastfood className='mr-10 ' size={25} />
+							Каталог
 						</li>
-						<li className='text-xl py-4 px-4 flex'>
+						<li className='text-xl py-4 px-4 flex hover:underline cursor-pointer'>
 							<MdFavorite className='mr-10' size={25} />
 							Избранное
 						</li>
-						<li className='text-xl py-4 px-4 flex'>
-							<FaWallet className='mr-10' size={25} />
-							Оплата
+						<li  className='text-xl py-4 px-4 flex hover:underline cursor-pointer'>
+							<BsFillCartFill  className='mr-10' size={25} />
+							Корзина
 						</li>
-						<li className='text-xl py-4 px-4 flex'>
-							<MdHelp className='mr-10' size={25} />
-							Помощь
-						</li>
-						<li className='text-xl py-4 px-4 flex'>
-							<AiFillTag className='mr-10' size={25} />
-							Продвижение
-						</li>
-						<li className='text-xl py-4 px-4 flex'>
-							<FaUserFriends className='mr-10' size={25} />
-							Пригласить друга
-						</li>
+						{(category || searchValue) && <li onClick={backToMain}  className='text-xl py-4 px-4 flex hover:underline cursor-pointer'>
+							<AiOutlineRollback  className='mr-10' size={25} />
+							Вернутся назад
+						</li> }
+				
 					</ul>
 				</nav>
 			</div>
