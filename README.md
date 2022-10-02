@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with https://foods-delivery-3qrke36er-noxplit.vercel.app/
 
 ## Available Scripts
 
